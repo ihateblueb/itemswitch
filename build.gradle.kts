@@ -20,6 +20,8 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    implementation("org.bstats:bstats-bukkit:3.0.2")
 }
 
 tasks {

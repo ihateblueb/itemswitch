@@ -1,0 +1,15 @@
+# this is really annoying otherwise and
+# will waste space in your console and logs
+debug: false
+
+# if enabled, players will need itemswitch.use
+# for the plugin to work for them
+requirePermission: false
+
+# below are default settings for players
+# these can be changed with /itemswitch toggle [event]
+blockPlace: true
+itemBreak: true
+itemConsume: true
+bucketEmpty: true
+dropItem: true

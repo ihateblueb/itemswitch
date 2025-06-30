@@ -81,7 +81,6 @@ class ItemSwitchListener : Listener {
                     }, 1L)
                     break
                 } else {
-                    println("ELSE")
                     // tools, blocks, food, other consumables without containers
                     player.inventory.setItem(it.position, ItemStack(Material.AIR))
                     player.inventory.setItem(hand.position, it.item)

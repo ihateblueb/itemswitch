@@ -36,7 +36,6 @@ class PreferenceService {
             if (player.player == null) throw Exception("Player cannot be null!")
             val pdc = player.player!!.persistentDataContainer
             return if (eventName != null) {
-                println("pdcgetkey + ${getKey(eventName)} "+pdc.get(getKey(eventName), PersistentDataType.BOOLEAN))
                 pdc.get(getKey(eventName), PersistentDataType.BOOLEAN) ?: ItemSwitch.instance.config.getBoolean(getConfigKey(eventName)) as Boolean? ?: true
             } else pdc.get(toggleKey, PersistentDataType.BOOLEAN) ?: true
         }

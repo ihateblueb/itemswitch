@@ -15,16 +15,25 @@ repositories {
     maven("https://oss.sonatype.org/content/groups/public/") {
         name = "sonatype"
     }
+
+    maven("https://repo.aikar.co/content/groups/aikar/") {
+        name = "aikar-repo"
+    }
 }
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
+    implementation("co.aikar:acf-bukkit:0.5.1-SNAPSHOT")
     implementation("org.bstats:bstats-bukkit:3.0.2")
 }
 
 tasks {
+    shadowJar {
+        relocate("org.bstats", "site.remlit.blueb.itemswitch.bstats-bukkit")
+    }
+
     runServer {
         minecraftVersion("1.20")
     }

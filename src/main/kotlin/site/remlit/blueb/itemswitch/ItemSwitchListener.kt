@@ -24,6 +24,9 @@ class ItemSwitchListener : Listener {
 
 
     private fun replace(player: Player) {
+        if (!PreferenceService.isEnabled(player))
+            return
+
         val item = player.inventory.itemInMainHand
 
         if (item.amount > 1 || !player.inventory.contains(item.type))

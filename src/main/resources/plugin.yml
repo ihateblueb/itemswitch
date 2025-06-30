@@ -1,0 +1,6 @@
+name: ItemSwitch
+version: '2025.6.1.0-SNAPSHOT'
+main: site.remlit.blueb.itemswitch.ItemSwitch
+api-version: '1.20'
+load: STARTUP
+authors: [ blueb ]

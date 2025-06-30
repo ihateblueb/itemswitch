@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "site.remlit.blueb"
-version = "2025.6.1.0-SNAPSHOT"
+version = "2025.6.1.0"
 
 repositories {
     mavenCentral()

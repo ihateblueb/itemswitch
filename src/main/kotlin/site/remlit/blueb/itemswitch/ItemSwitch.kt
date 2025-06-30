@@ -12,6 +12,8 @@ class ItemSwitch : JavaPlugin() {
 
         commandManager = BukkitCommandManager(instance)
         ItemSwitchCommand.register()
+
+        saveDefaultConfig()
     }
 
     override fun onDisable() { }

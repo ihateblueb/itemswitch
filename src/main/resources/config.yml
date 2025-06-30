@@ -1,7 +1,3 @@
-# this is really annoying otherwise and
-# will waste space in your console and logs
-debug: false
-
 # if enabled, players will need itemswitch.use
 # for the plugin to work for them
 requirePermission: false

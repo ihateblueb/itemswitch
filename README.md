@@ -1,8 +1,11 @@
 # ItemSwitch
 
-A simple plugin that automatically switches your hand after a stack runs out or if an item breaks.
+A simple quality of life plugin that automatically replaces whatever's in your hand after it's been used, runs out, or breaks.
 
-Toggleable with `/itemswitch toggle`. Toggled on by default.
+Works with items, potions, buckets, and blocks.
 
-## Todo
-- Optional permission requirement
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/8NsIaW7285c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+By default, it's enabled, but can be toggled per-user with `/itemswitch toggle`. Individual events can also be toggled on and off. All defaults are configurable.
+
+Optionally, you can require the `itemswitch.use` permission for the plugin to work.

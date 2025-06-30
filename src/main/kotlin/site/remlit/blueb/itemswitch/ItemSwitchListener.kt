@@ -15,21 +15,20 @@ import org.bukkit.inventory.ItemStack
 import site.remlit.blueb.itemswitch.util.Inventory
 
 class ItemSwitchListener : Listener {
-    @EventHandler(priority = EventPriority.HIGHEST)
-    fun onBlockPlace(event: BlockPlaceEvent) = replace(event.player)
+    @EventHandler()
+    fun onBlockPlace(event: BlockPlaceEvent) = replace(event.player, event.eventName)
 
-    @EventHandler(priority = EventPriority.HIGHEST)
-    fun onPlayerItemBreak(event: PlayerItemBreakEvent) = replace(event.player)
+    @EventHandler()
+    fun onPlayerItemBreak(event: PlayerItemBreakEvent) = replace(event.player, event.eventName)
 
-    @EventHandler(priority = EventPriority.HIGHEST)
-    fun onPlayerItemConsume(event: PlayerItemConsumeEvent) = replace(event.player)
+    @EventHandler()
+    fun onPlayerItemConsume(event: PlayerItemConsumeEvent) = replace(event.player, event.eventName)
 
-    @EventHandler(priority = EventPriority.HIGHEST)
-    fun onPlayerBucketEmpty(event: PlayerBucketEmptyEvent) = replace(event.player)
+    @EventHandler()
+    fun onPlayerBucketEmpty(event: PlayerBucketEmptyEvent) = replace(event.player, event.eventName)
 
-    // todo: test
-    @EventHandler(priority = EventPriority.HIGHEST)
-    fun onPlayerDropItem(event: PlayerDropItemEvent) = replace(event.player)
+    @EventHandler()
+    fun onPlayerDropItem(event: PlayerDropItemEvent) = replace(event.player, event.eventName)
 
     private val buckets: List<Material> = listOf(
         Material.WATER_BUCKET,
@@ -51,8 +50,11 @@ class ItemSwitchListener : Listener {
         Material.HONEY_BOTTLE,
     )
 
-    private fun replace(player: Player) {
-        if (!PreferenceService.isEnabled(player))
+    private fun replace(player: Player, eventName: String) {
+        if (ItemSwitch.instance.config.getBoolean("requirePermission") as Boolean? ?: false && !player.hasPermission("itemswitch.use"))
+            return
+
+        if (!PreferenceService.isEnabled(player) || !PreferenceService.isEnabled(player, eventName))
             return
 
         val inventory = Inventory.from(player.inventory)

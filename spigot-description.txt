@@ -1,0 +1,11 @@
+[SIZE=6]ItemSwitch[/SIZE]
+
+A simple quality of life plugin that automatically replaces whatever's in your hand after it's been used, runs out, or breaks.
+
+Works with items, potions, buckets, and blocks.
+
+[MEDIA=youtube]8NsIaW7285c[/MEDIA]
+
+By default, it's enabled, but can be toggled per-user with [B]/itemswitch toggle[/B]. Individual events can also be toggled on and off. All defaults are configurable.
+
+Optionally, you can require the [B]itemswitch.use[/B] permission for the plugin to work.

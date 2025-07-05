@@ -1,1 +1,1 @@
-rootProject.name = "itemswitch"
+rootProject.name = "ItemSwitch"

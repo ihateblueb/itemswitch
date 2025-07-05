@@ -5,12 +5,12 @@ plugins {
 }
 
 group = "site.remlit.blueb"
-version = "2025.6.1.0"
+version = "2025.7.1.0"
 
 repositories {
     mavenCentral()
-    maven("https://repo.papermc.io/repository/maven-public/") {
-        name = "papermc-repo"
+    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") {
+        name = "spigotmc-repo"
     }
     maven("https://oss.sonatype.org/content/groups/public/") {
         name = "sonatype"
@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.20-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     implementation("co.aikar:acf-bukkit:0.5.1-SNAPSHOT")

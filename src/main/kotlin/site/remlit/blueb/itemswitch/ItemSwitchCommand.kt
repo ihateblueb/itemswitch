@@ -15,76 +15,39 @@ class ItemSwitchCommand : BaseCommand() {
     fun default(sender: CommandSender) {
         val player = Bukkit.getOfflinePlayer(sender.name).player
         if (player == null) return
-        sender.sendMessage {
-            if (PreferenceService.isEnabled(player)) Component.text("Automatic item switching is on")
-            else Component.text("Automatic item switching is off")
-        }
+        sender.sendMessage(
+            if (PreferenceService.isEnabled(player)) "Automatic item switching is off"
+            else "Automatic item switching is off"
+        )
     }
 
     @Subcommand("toggle")
-    fun toggle(sender: CommandSender) {
-        val player = Bukkit.getOfflinePlayer(sender.name).player
-        if (player == null) return
-        val result = PreferenceService.toggleEnabled(player)
-        sender.sendMessage {
-            if (result) Component.text("Toggled automatic item switching on")
-            else Component.text("Toggled automatic item switching off")
-        }
-    }
+    fun toggle(sender: CommandSender) = handle(sender)
 
     @Subcommand("toggle blockPlace")
-    fun blockPlace(sender: CommandSender) {
-        val player = Bukkit.getOfflinePlayer(sender.name).player
-        if (player == null) return
-        val result = PreferenceService.toggleEnabled(player, "blockPlace")
-        sender.sendMessage {
-            if (result) Component.text("Toggled automatic item switching for blockPlace on")
-            else Component.text("Toggled automatic item switching for blockPlace off")
-        }
-    }
+    fun blockPlace(sender: CommandSender) = handle(sender, "blockPlace")
 
     @Subcommand("toggle itemBreak")
-    fun itemBreak(sender: CommandSender) {
-        val player = Bukkit.getOfflinePlayer(sender.name).player
-        if (player == null) return
-        val result = PreferenceService.toggleEnabled(player, "itemBreak")
-        sender.sendMessage {
-            if (result) Component.text("Toggled automatic item switching for itemBreak on")
-            else Component.text("Toggled automatic item switching for itemBreak off")
-        }
-    }
+    fun itemBreak(sender: CommandSender) = handle(sender, "itemBreak")
 
     @Subcommand("toggle itemConsume")
-    fun itemConsume(sender: CommandSender) {
-        val player = Bukkit.getOfflinePlayer(sender.name).player
-        if (player == null) return
-        val result = PreferenceService.toggleEnabled(player, "itemConsume")
-        sender.sendMessage {
-            if (result) Component.text("Toggled automatic item switching for itemConsume on")
-            else Component.text("Toggled automatic item switching for itemConsume off")
-        }
-    }
+    fun itemConsume(sender: CommandSender) = handle(sender, "itemConsume")
 
     @Subcommand("toggle bucketEmpty")
-    fun bucketEmpty(sender: CommandSender) {
-        val player = Bukkit.getOfflinePlayer(sender.name).player
-        if (player == null) return
-        val result = PreferenceService.toggleEnabled(player, "bucketEmpty")
-        sender.sendMessage {
-            if (result) Component.text("Toggled automatic item switching for bucketEmpty on")
-            else Component.text("Toggled automatic item switching for bucketEmpty off")
-        }
-    }
+    fun bucketEmpty(sender: CommandSender) = handle(sender, "bucketEmpty")
 
-    @Subcommand("toggle dropItem")
-    fun dropItem(sender: CommandSender) {
+    @Subcommand("toggle dropitem")
+    fun dropItem(sender: CommandSender) = handle(sender, "dropItem")
+
+
+    fun handle(sender: CommandSender, type: String? = null) {
         val player = Bukkit.getOfflinePlayer(sender.name).player
         if (player == null) return
-        val result = PreferenceService.toggleEnabled(player, "dropItem")
-        sender.sendMessage {
-            if (result) Component.text("Toggled automatic item switching for dropItem on")
-            else Component.text("Toggled automatic item switching for dropItem off")
-        }
+        val result = if (type != null) PreferenceService.toggleEnabled(player, type) else PreferenceService.toggleEnabled(player)
+        sender.sendMessage(
+            if (result) "Toggled automatic item switching${if (type != null) " for $type " else " "}on"
+            else "Toggled automatic item switching${if (type != null) " for $type " else " "}off"
+        )
     }
 
     companion object {

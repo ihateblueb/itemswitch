@@ -1,5 +1,5 @@
 name: ItemSwitch
-version: '2025.6.1.0'
+version: '2025.7.1.0'
 main: site.remlit.blueb.itemswitch.ItemSwitch
 api-version: '1.20'
 load: STARTUP
@@ -8,4 +8,4 @@ authors: [ blueb ]
 permissions:
   itemswitch.use:
     description: "Allow players to use the plugin"
-    default: notop
+    default: not op

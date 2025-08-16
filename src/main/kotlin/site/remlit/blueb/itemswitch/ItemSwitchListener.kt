@@ -62,6 +62,10 @@ class ItemSwitchListener : Listener {
         if (hand == null || hand.item.amount > 1 || !inventory.hasMoreThanOne(hand))
             return
 
+        ItemSwitch.instance.config.getStringList("blacklist").forEach { material ->
+            if (Material.valueOf(material) == hand.item.type) return
+        }
+
         for (it in inventory.content) {
             if (it.uniqueId == hand.uniqueId) continue
             if (it.item.type == hand.item.type) {
